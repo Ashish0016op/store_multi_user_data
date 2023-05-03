@@ -15,10 +15,17 @@ function addDetails(e){
   deleteBtn.className='delete';
   deleteBtn.appendChild(document.createTextNode('delete'));
   li.appendChild(deleteBtn);
+  let editBtn=document.createElement('button');
+  editBtn.className='edit';
+  editBtn.appendChild(document.createTextNode("edit"));
+  li.appendChild(editBtn);
   addData.appendChild(li);
-  localStorage.setItem(Name_user,Name_user);
-  localStorage.setItem(Email_user,Email_user);
-  localStorage.setItem(Phone_user,Phone_user);
+  let obj={
+    Name_user,
+    Email_user,
+    Phone_user
+  }
+  localStorage.setItem(Email_user,JSON.stringify(obj));
 
 }
 addData.addEventListener('click',removeItem);
@@ -29,7 +36,12 @@ function removeItem(e){
             let li=e.target.parentElement;
             addData.removeChild(li);
     }
-    localStorage.removeItem(Name_user);
-    localStorage.removeItem(Email_user);
-    localStorage.removeItem(Phone_user);
+}
+addData.addEventListener('click',EditItem);
+function EditItem(e){
+    e.preventDefault();
+    if(e.target.classList.contains('edit')){
+        let li=e.target.parentElement;
+        addData.removeChild(li);
+    }
 }
