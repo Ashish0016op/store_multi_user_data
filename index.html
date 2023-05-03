@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form</title>
+</head>
+<body>
+    <form onsubmit="saveToLocalStorage(event)">
+        <label for="name">Name</label>
+        <input type="text" id="username">
+        <label for="email">Email</label>
+        <input type="emajil" id="email">
+        <label for="number">Phone Number</label>
+        <input type="number" id="PhNumber">
+        <button>submit</button>
+    </form>
+    <ul id="userInput">
+
+    </ul>
+    
+
+
+    <script>
+        function saveLocalStorage(event){
+                event.preventDefault();
+                let name=event.target.username.value;
+                let email=event.target.email.value;
+                let phoneNumber=event.target.PhNumber.value;
+                let obj={
+                    name,
+                    email,
+                    phoneNumber
+                }
+                localStorage.setItem(obj.email,JSON.stringify(obj));
+                showUserOnScreen(obj);
+
+        }
+        function showUserOnScreen(obj){
+                let pareentElm=document.getElementById('userInput');
+                let childElm=document.createElement('li');
+                childElm.textContent=obj.name +'-'+obj.email+'-'+obj.phoneNumber;
+                pareentElm.appendChild(childElm);
+        }
+    </script>
+
+    
+</body>
+</html>
