@@ -16,6 +16,10 @@ function addDetails(e){
   deleteBtn.appendChild(document.createTextNode('delete'));
   li.appendChild(deleteBtn);
   addData.appendChild(li);
+  localStorage.setItem(Name_user,Name_user);
+  localStorage.setItem(Email_user,Email_user);
+  localStorage.setItem(Phone_user,Phone_user);
+
 }
 addData.addEventListener('click',removeItem);
 function removeItem(e){
@@ -25,4 +29,7 @@ function removeItem(e){
             let li=e.target.parentElement;
             addData.removeChild(li);
     }
+    localStorage.removeItem(Name_user);
+    localStorage.removeItem(Email_user);
+    localStorage.removeItem(Phone_user);
 }
