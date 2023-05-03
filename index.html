@@ -7,44 +7,20 @@
     <title>form</title>
 </head>
 <body>
-    <form onsubmit="saveToLocalStorage(event)">
-        <label for="name">Name</label>
-        <input type="text" id="username">
-        <label for="email">Email</label>
-        <input type="emajil" id="email">
-        <label for="number">Phone Number</label>
-        <input type="number" id="PhNumber">
-        <button>submit</button>
-    </form>
-    <ul id="userInput">
+    <div class="container">
+        <form id="user-list">
+          <label for="userName">Name</label>
+          <input type="text" id="name">
+          <label for="userEmail">Email</label>
+          <input type="email" id="userEmail">
+          <label for="userNum">Phone Number</label>
+          <input type="number" id="userNumber">
+          <input type="submit">
+        </form>
+    </div>
+      <ul id="userDetails">
 
-    </ul>
-    
-
-
-    <script>
-        function saveLocalStorage(event){
-                event.preventDefault();
-                let name=event.target.username.value;
-                let email=event.target.email.value;
-                let phoneNumber=event.target.PhNumber.value;
-                let obj={
-                    name,
-                    email,
-                    phoneNumber
-                }
-                localStorage.setItem(obj.email,JSON.stringify(obj));
-                showUserOnScreen(obj);
-
-        }
-        function showUserOnScreen(obj){
-                let pareentElm=document.getElementById('userInput');
-                let childElm=document.createElement('li');
-                childElm.textContent=obj.name +'-'+obj.email+'-'+obj.phoneNumber;
-                pareentElm.appendChild(childElm);
-        }
-    </script>
-
-    
+      </ul>
+    <script src="./script.js"></script>
 </body>
 </html>
