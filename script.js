@@ -25,7 +25,13 @@ function addDetails(e){
     Email_user,
     Phone_user
   }
-  localStorage.setItem(Email_user,JSON.stringify(obj));
+  axios.post("https://crudcrud.com/api/5f3fd97e9c4d4a5796fe596944fb7d8d/userDetails",obj)
+    .then((res)=>{
+      console.log(res.data);
+    })
+    .catch((err)=>{
+      console.log(err);
+    })
 
 }
 addData.addEventListener('click',removeItem);
