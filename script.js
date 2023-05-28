@@ -25,12 +25,12 @@ function addDetails(e){
     Email_user,
     Phone_user
   }
-  axios.post("https://crudcrud.com/api/5f3fd97e9c4d4a5796fe596944fb7d8d/userDetails",obj)
-    .then((res)=>{
-      console.log(res.data);
+  axios.post("https://crudcrud.com/api/df38de985354424f8be26de026fd482f/userDetails",obj)
+    .then((response)=>{
+      console.log(response.data);
     })
-    .catch((err)=>{
-      console.log(err);
+    .catch((error)=>{
+      console.log(error);
     })
 
 }
@@ -51,3 +51,28 @@ function EditItem(e){
         addData.removeChild(li);
     }
 }
+window.addEventListener('DOMContentLoaded',()=>{
+  axios.get("https://crudcrud.com/api/df38de985354424f8be26de026fd482f/userDetails")
+  .then((response)=>{
+    console.log(response.data)
+    for(let i=0;i<response.data.length;i++){
+      let li=document.createElement('li');
+      li.className='detailsOfUser';
+      li.appendChild(document.createTextNode(JSON.stringify (response.data[i].Name_user+"-")));
+      li.appendChild(document.createTextNode(JSON.stringify (response.data[i].Email_user+"-")));
+      li.appendChild(document.createTextNode(JSON.stringify (response.data[i].Phone_user+"-")));
+      let deleteBtn=document.createElement('button');
+      deleteBtn.className='delete';
+      deleteBtn.appendChild(document.createTextNode('delete'));
+      li.appendChild(deleteBtn);
+      let editBtn=document.createElement('button');
+      editBtn.className='edit';
+      editBtn.appendChild(document.createTextNode("edit"));
+      li.appendChild(editBtn);
+      addData.appendChild(li);
+    }
+      
+  }).catch((error)=>{
+    console.log(error);
+  })
+})
