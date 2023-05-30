@@ -61,6 +61,17 @@ function EditItem(e){
     if(e.target.classList.contains('edit')){
         let li=e.target.parentElement;
         addData.removeChild(li);
+        const updateData = async (id, newData) => {
+          try {
+            const response = await axios.put(`https://crudcrud.com/api/3e37c2d1895c4645ba3a7e02e85b65bc/appointmentDetails/64756cd8456f2b03e80b9322`, newData);
+            console.log('Data updated successfully:', response.data);
+          } catch (error) {
+            console.error('Error updating data:', error);
+          }
+        };
+        const idToUpdate = '64756cd8456f2b03e80b9322';
+        const updatedData = {Name_user: 'niket kumar', Email_user: 'gdaki@gmail.com',Phone_user:'35235235' };
+        updateData(idToUpdate, updatedData);
     }
 }
 window.addEventListener('DOMContentLoaded',()=>{
