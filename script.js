@@ -25,7 +25,7 @@ function addDetails(e){
     Email_user,
     Phone_user
   }
-  axios.post("https://crudcrud.com/api/df38de985354424f8be26de026fd482f/userDetails",obj)
+  axios.post("https://crudcrud.com/api/3e37c2d1895c4645ba3a7e02e85b65bc/appointmentDetails",obj)
     .then((response)=>{
       console.log(response.data);
     })
@@ -38,9 +38,21 @@ addData.addEventListener('click',removeItem);
 function removeItem(e){
     e.preventDefault();
     //console.log(1);
-     if(e.target.classList.contains('delete')){
+    if(e.target.classList.contains('delete')){
             let li=e.target.parentElement;
             addData.removeChild(li);
+
+            const deleteData = async (id) => {
+              try {
+                const response = await axios.delete(`https://crudcrud.com/api/3e37c2d1895c4645ba3a7e02e85b65bc/appointmentDetails/64756d98456f2b03e80b9323`);
+                console.log('Data deleted successfully:', response.data);
+              } catch (error) {
+                console.error('Error deleting data:', error);
+              }
+            };
+            const idToDelete = '64756d98456f2b03e80b9323';
+            deleteData(idToDelete);
+
     }
 }
 addData.addEventListener('click',EditItem);
@@ -52,7 +64,7 @@ function EditItem(e){
     }
 }
 window.addEventListener('DOMContentLoaded',()=>{
-  axios.get("https://crudcrud.com/api/df38de985354424f8be26de026fd482f/userDetails")
+  axios.get("https://crudcrud.com/api/3e37c2d1895c4645ba3a7e02e85b65bc/appointmentDetails")
   .then((response)=>{
     console.log(response.data)
     for(let i=0;i<response.data.length;i++){
